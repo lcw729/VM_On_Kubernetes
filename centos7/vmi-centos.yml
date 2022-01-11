@@ -1,0 +1,36 @@
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/os: linux
+  name: example-centos7
+spec:
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: myvmi
+    spec:
+      domain:
+        cpu:
+          cores: 2
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: disk0
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: cloudinitdisk
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 2056M
+      volumes:
+      - name: disk0
+        persistentVolumeClaim:
+          claimName: example-centos7
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userDataBase64: I2Nsb3VkLWNvbmZpZwoKI3BhY2thZ2VfdXBncmFkZTogdHJ1ZQoKI3BhY2thZ2VzOgojICAtIGdpdAojICAtIHhyZHAKIyAgLQoKcnVuY21kOgogLSBbIHNoLCAtYywgInl1bSBncm91cGluc3RhbGwgLXkgJ0dOT01FIERlc2t0b3AnICdHcmFwaGljYWwgQWRtaW5pc3RyYXRpb24gVG9vbHMnIiBdCiAtIFsgc2gsIC1jLCAibG4gLXNmIC9saWIvc3lzdGVtZC9zeXN0ZW0vcnVubGV2ZWw1LnRhcmdldCAvZXRjL3N5c3RlbWQvc3lzdGVtL2RlZmF1bHQudGFyZ2V0IiBdCiAtIFsgc2gsIC1jLCAicnBtIC1VdmggaHR0cHM6Ly9kbC5mZWRvcmFwcm9qZWN0Lm9yZy9wdWIvZXBlbC9lcGVsLXJlbGVhc2UtbGF0ZXN0LTcubm9hcmNoLnJwbSIgXQogLSBbIHNoLCAtYywgInl1bSAteSBpbnN0YWxsIHhyZHAgdGlnZXJ2bmMtc2VydmVyIiBdCiAtIFsgc2gsIC1jLCAic3lzdGVtY3RsIHN0YXJ0IHhyZHAiIF0KIC0gWyBzaCwgLWMsICJzeXN0ZW1jdGwgZW5hYmxlIHhyZHAiIF0KIC0gWyBzaCwgLWMsICJzeXN0ZW1jdGwgZW5hYmxlIGZpcmV3YWxsZCIgXQogLSBbIHNoLCAtYywgInN5c3RlbWN0bCBzdGFydCBmaXJld2FsbGQiIF0KIC0gWyBzaCwgLWMsICJmaXJld2FsbC1jbWQgLS1wZXJtYW5lbnQgLS1hZGQtcG9ydD0zMzg5L3RjcCIgXQogLSBbIHNoLCAtYywgImZpcmV3YWxsLWNtZCAtLXJlbG9hZCIgXQogLSBbIHNoLCAtYywgInN1ZG8gcmVib290IiBdCiAtIFsgc2gsIC1jLCAiY2QgL3Vzci9sb2NhbC9zcmMiXQogLSBbIHNoLCAtYywgIndnZXQgaHR0cHM6Ly9nby5kZXYvZGwvZ28xLjE3LjUubGludXgtYW1kNjQudGFyLmd6Il0KIC0gWyBzaCwgLWMsICJ0YXIgLUMgL3Vzci9sb2NhbCAteHp2ZiBnbzEuMTcuNS5saW51eC1hbWQ2NC50YXIuZ3oiXQogLSBbIHNoLCAtYywgInN1ZG8gbXYgZ28gL3Vzci9sb2NhbCJdCiAtIFsgc2gsIC1jLCAibWtkaXIgJEhPTUUvZ28iXQogLSBbIHNoLCAtYywgImV4cG9ydCBHT1JPT1Q9L3Vzci9sb2NhbC9nbyJdCiAtIFsgc2gsIC1jLCAiZXhwb3J0IEdPUEFUSD0kSE9NRS9nbyJdCiAtIFsgc2gsIC1jLCAiR09CSU49JEdPUEFUSC9iaW4iXQogLSBbIHNoLCAtYywgImV4cG9ydCBQQVRIPSRHT1JPT1QvYmluOiRHT0JJTjokUEFUSCJdCiAtIFsgc2gsIC1jLCAic291cmNlIH4vLnByb2ZpbGUiXQogLSBbIHNoLCAtYywgImNwIC91c3IvbG9jYWwvZ28vYmluL2dvIC91c3IvYmluL2dvIl0KIC0gWyBzaCwgLWMsICJnbyB2ZXJzaW9uIl0KCgp1c2VyczoKICAtIG5hbWU6IGNlbnRvcwogICAgZ2Vjb3M6IGNlbnRvcwogICAgcGFzc3dvcmQ6IHBhc3N3b3JkCiAgICBsb2NrLXBhc3N3ZDogZmFsc2UKICAgIHN1ZG86IEFMTD0oQUxMKSBOT1BBU1NXRDpBTEwKICAgIHNzaF9hdXRob3JpemVkX2tleXM6CiAgICAgIC0gc3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFDeVBBa0tIeVp2N2doL3hTSHdQaG1KdVFtTVBiYnUzNTVRMk1PVzB3a2JqUDZ3ZkwyOTM5VmdzRWs1Q0N5My9zS2NpKy9WWkhTd1Bnb0IwRUtCallmZjRYNG1kcUVDSSsrbjZpQkVSSE92UWN0cENvOFlQWGdjeUFUb29SVE1IeXMybDNYaFVCRTU1TE9oRWpFZXZYYmMzdnNsRXJ3TlFCRCtESDE3RGRIczNDMkFTMjdRSXlzQThYQjFPVDJIaWoxV3BsaXBLRUJLWUNUL2I4NUNZc0gvNDMycXNEZzVIUkVBeUgxQ3Z5cjg1WWpBcnByRkNkRVVqV1E3b1UwQTFNUndtRnN2UWxyNnE3K1dValVTeW1sNlVWYmxUYms4ajdSeUgyNGNVWVlPbUVYeUJPdFpmdUZiR0YvYlg4NnF0b1ljdHNSV1lpTEk5RFAyWmU5R3kvNzEgcm9vdEB1bmlrZXJuZWwtbWFzdGVyCg==
