@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gke-pv-pod
+spec:
+  containers:
+    - name: gke-pv-pod
+      image: busybox
+      args: [ "tail", "-f", "/dev/null" ]
+      volumeMounts:
+      - name: "volume"
+        mountPath: "/mnt/google"
+  volumes:
+  - name : "volume"
+    persistentVolumeClaim:
+      claimName: gke-pvc

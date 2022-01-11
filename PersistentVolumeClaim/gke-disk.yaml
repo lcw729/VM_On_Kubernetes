@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gke-pvc
+spec:
+  storageClassName: ""            # 1. 다이나믹 프로비저닝을 사용하지 않음을 명시합니다.
+  accessModes:
+    - ReadWriteOnce               # 2. accessMode가 ReadWriteOnce 인 PV를 선택합니다.
+  resources:
+    requests:
+      storage: 5Gi

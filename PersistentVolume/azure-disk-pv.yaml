@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: azure-disk-pv
+spec:
+  capacity:
+    storage: 10Gi
+  storageClassName: azure-disk
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  azureDisk:
+    kind: Managed
+    diskName: azure_disk02
+    diskURI: /subscriptions/ccfc0c6c-d3c6-4de2-9a6c-c09ca498ff73/resourceGroups/hcpResourceGroup/providers/Microsoft.Compute/disks/azure_disk02

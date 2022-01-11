@@ -1,0 +1,24 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mypodrestored
+spec:
+  containers:
+  - name: mypodrestored
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: volume
+  volumes:
+    - name: volume
+      azureDisk:
+        kind: Managed
+        diskName: azure_disk02
+        diskURI: /subscriptions/ccfc0c6c-d3c6-4de2-9a6c-c09ca498ff73/resourceGroups/hcpResourceGroup/providers/Microsoft.Compute/disks/azure_disk02
