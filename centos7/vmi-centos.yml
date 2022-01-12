@@ -5,6 +5,7 @@ metadata:
     kubevirt.io/os: linux
   name: example-centos7
 spec:
+  running: true
   template:
     metadata:
       labels:

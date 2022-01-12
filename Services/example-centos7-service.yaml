@@ -1,0 +1,54 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      field.cattle.io/publicEndpoints: '[{"addresses":["10.244.1.72"],"port":30575,"protocol":"TCP","serviceName":"default:example-centos7-sv","allNodes":true}]'
+    creationTimestamp: "2020-07-12T01:11:20Z"
+    name: example-centos7-sv
+    resourceVersion: "1865799"
+    selfLink: /api/v1/namespaces/default/services/example-centos7-sv
+    uid: ed1df86f-0ca8-45bf-865b-f410bb64727c
+  spec:
+    clusterIP: 10.96.0.2
+    externalTrafficPolicy: Cluster
+    ports:
+    - nodePort: 30575
+      port: 3389
+      protocol: TCP
+      targetPort: 3389
+    selector:
+      kubevirt.io/domain: myvmi
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      field.cattle.io/publicEndpoints: '[{"addresses":["10.244.1.72"],"port":32171,"protocol":"TCP","serviceName":"default:example-centos7-sv","allNodes":true}]'
+    creationTimestamp: "2020-07-12T00:47:13Z"
+    name: example-centos7-ssh
+    resourceVersion: "1855162"
+    selfLink: /api/v1/namespaces/default/services/example-centos7-ssh
+    uid: 092e2596-c78b-4584-bbf9-1a7937646b07
+  spec:
+    clusterIP: 10.96.0.3
+    externalTrafficPolicy: Cluster
+    ports:
+    - nodePort: 32171
+      port: 22
+      protocol: TCP
+      targetPort: 22
+    selector:
+      kubevirt.io/domain: myvmi
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
