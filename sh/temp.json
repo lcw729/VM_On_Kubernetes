@@ -2,12 +2,16 @@
   "apiVersion": "v1",
   "kind": "Namespace",
   "metadata": {
-    "creationTimestamp": "2022-01-14T08:15:26Z",
-    "deletionTimestamp": "2022-01-17T02:58:37Z",
-    "name": "openebs",
-    "resourceVersion": "11675514",
-    "selfLink": "/api/v1/namespaces/openebs",
-    "uid": "0536c161-7bb9-42f8-9a9b-2ba0eb8c3132"
+    "creationTimestamp": "2022-01-12T09:04:08Z",
+    "deletionTimestamp": "2022-01-17T04:17:54Z",
+    "labels": {
+      "kubernetes.io/metadata.name": "kubevirt",
+      "kubevirt.io": "",
+      "openshift.io/cluster-monitoring": "true"
+    },
+    "name": "kubevirt",
+    "resourceVersion": "1586164",
+    "uid": "0cd5292e-7b47-4812-b9f8-52e99c65effd"
   },
   "spec": {
     "finalizers": []
@@ -15,35 +19,35 @@
   "status": {
     "conditions": [
       {
-        "lastTransitionTime": "2022-01-17T02:58:42Z",
+        "lastTransitionTime": "2022-01-17T04:17:59Z",
         "message": "Discovery failed for some groups, 4 failing: unable to retrieve the complete list of server APIs: subresources.kubevirt.io/v1: the server is currently unable to handle the request, subresources.kubevirt.io/v1alpha3: the server is currently unable to handle the request, upload.cdi.kubevirt.io/v1alpha1: the server is currently unable to handle the request, upload.cdi.kubevirt.io/v1beta1: the server is currently unable to handle the request",
         "reason": "DiscoveryFailed",
         "status": "True",
         "type": "NamespaceDeletionDiscoveryFailure"
       },
       {
-        "lastTransitionTime": "2022-01-17T02:58:43Z",
+        "lastTransitionTime": "2022-01-17T04:18:00Z",
         "message": "All legacy kube types successfully parsed",
         "reason": "ParsedGroupVersions",
         "status": "False",
         "type": "NamespaceDeletionGroupVersionParsingFailure"
       },
       {
-        "lastTransitionTime": "2022-01-17T02:58:43Z",
-        "message": "All content successfully deleted, may be waiting on finalization",
-        "reason": "ContentDeleted",
-        "status": "False",
+        "lastTransitionTime": "2022-01-17T04:18:00Z",
+        "message": "Failed to delete all resource types, 1 remaining: Internal error occurred: failed calling webhook \"kubevirt-validator.kubevirt.io\": failed to call webhook: Post \"https://kubevirt-operator-webhook.kubevirt.svc:443/kubevirt-validate-delete?timeout=10s\": service \"kubevirt-operator-webhook\" not found",
+        "reason": "ContentDeletionFailed",
+        "status": "True",
         "type": "NamespaceDeletionContentFailure"
       },
       {
-        "lastTransitionTime": "2022-01-17T02:58:55Z",
+        "lastTransitionTime": "2022-01-17T04:18:12Z",
         "message": "All content successfully removed",
         "reason": "ContentRemoved",
         "status": "False",
         "type": "NamespaceContentRemaining"
       },
       {
-        "lastTransitionTime": "2022-01-17T02:58:43Z",
+        "lastTransitionTime": "2022-01-17T04:18:00Z",
         "message": "All content-preserving finalizers finished",
         "reason": "ContentHasNoFinalizers",
         "status": "False",
