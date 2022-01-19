@@ -2,16 +2,15 @@
   "apiVersion": "v1",
   "kind": "Namespace",
   "metadata": {
-    "creationTimestamp": "2022-01-12T09:04:08Z",
-    "deletionTimestamp": "2022-01-17T04:17:54Z",
+    "creationTimestamp": "2022-01-19T01:31:33Z",
+    "deletionTimestamp": "2022-01-19T01:40:06Z",
     "labels": {
-      "kubernetes.io/metadata.name": "kubevirt",
-      "kubevirt.io": "",
-      "openshift.io/cluster-monitoring": "true"
+      "cdi.kubevirt.io": "",
+      "kubernetes.io/metadata.name": "cdi"
     },
-    "name": "kubevirt",
-    "resourceVersion": "1586164",
-    "uid": "0cd5292e-7b47-4812-b9f8-52e99c65effd"
+    "name": "cdi",
+    "resourceVersion": "94533",
+    "uid": "419400f3-8da8-4aa6-a57c-0eb833deede7"
   },
   "spec": {
     "finalizers": []
@@ -19,35 +18,35 @@
   "status": {
     "conditions": [
       {
-        "lastTransitionTime": "2022-01-17T04:17:59Z",
+        "lastTransitionTime": "2022-01-19T01:40:11Z",
         "message": "Discovery failed for some groups, 4 failing: unable to retrieve the complete list of server APIs: subresources.kubevirt.io/v1: the server is currently unable to handle the request, subresources.kubevirt.io/v1alpha3: the server is currently unable to handle the request, upload.cdi.kubevirt.io/v1alpha1: the server is currently unable to handle the request, upload.cdi.kubevirt.io/v1beta1: the server is currently unable to handle the request",
         "reason": "DiscoveryFailed",
         "status": "True",
         "type": "NamespaceDeletionDiscoveryFailure"
       },
       {
-        "lastTransitionTime": "2022-01-17T04:18:00Z",
+        "lastTransitionTime": "2022-01-19T01:40:14Z",
         "message": "All legacy kube types successfully parsed",
         "reason": "ParsedGroupVersions",
         "status": "False",
         "type": "NamespaceDeletionGroupVersionParsingFailure"
       },
       {
-        "lastTransitionTime": "2022-01-17T04:18:00Z",
-        "message": "Failed to delete all resource types, 1 remaining: Internal error occurred: failed calling webhook \"kubevirt-validator.kubevirt.io\": failed to call webhook: Post \"https://kubevirt-operator-webhook.kubevirt.svc:443/kubevirt-validate-delete?timeout=10s\": service \"kubevirt-operator-webhook\" not found",
-        "reason": "ContentDeletionFailed",
-        "status": "True",
+        "lastTransitionTime": "2022-01-19T01:41:23Z",
+        "message": "All content successfully deleted, may be waiting on finalization",
+        "reason": "ContentDeleted",
+        "status": "False",
         "type": "NamespaceDeletionContentFailure"
       },
       {
-        "lastTransitionTime": "2022-01-17T04:18:12Z",
+        "lastTransitionTime": "2022-01-19T01:41:23Z",
         "message": "All content successfully removed",
         "reason": "ContentRemoved",
         "status": "False",
         "type": "NamespaceContentRemaining"
       },
       {
-        "lastTransitionTime": "2022-01-17T04:18:00Z",
+        "lastTransitionTime": "2022-01-19T01:40:14Z",
         "message": "All content-preserving finalizers finished",
         "reason": "ContentHasNoFinalizers",
         "status": "False",
